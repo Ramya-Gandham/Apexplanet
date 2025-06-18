@@ -1,0 +1,291 @@
+<html>
+<head>
+    <title>Web Development Course</title>
+    <style>
+        body {margin: 0;font-family:'Verdana', sans-serif;color: #333;background: #edf5ff;}
+
+        header {background: #0099cc;color: #ffffff;padding: 20px;display: flex;justify-content: space-between;align-items: center;}
+
+        header ul {list-style: none;margin: 0;padding: 0;}
+
+        header ul li {display: inline-block;margin-right: 20px;}
+
+        header ul li a {color: #ffffff;text-decoration: none;font-size: 1.1em;}
+
+        h1 {color: #003366;margin-bottom: 10px;text-align: center;}
+
+        p {margin-bottom: 15px;}
+
+        .hero {padding: 30px;text-align: center;}
+
+        button {margin: 20px;padding: 10px 20px;background: #ff9900;color: #ffffff;
+                 border: none;border-radius: 5px;font-size: 1em;cursor: pointer;}
+
+        button:hover {background: #cc7a00;}
+
+        .container {display: flex;gap: 20px;margin: 20px;}
+
+        .box {background: #ffffff;padding: 20px;border-radius: 10px;box-shadow: 0 0 10px 5px #0003;text-align: center;flex: 1;}
+
+        .box img {max-width: 100%;height: auto;margin-bottom: 15px;border-radius: 10px;}
+
+        .box a {color: #ff9900;text-decoration: none;font-size: 1.1em;}
+
+        .box a:hover {color: #cc7a00;}
+
+        table {width: 80%;margin: 20px auto;border-collapse: collapse;background: linear-gradient(135deg, #ffcccb, #ffebcc);
+               box-shadow: 0 0 10px 5px #0003;display: none;border-radius: 10px;overflow: hidden;}
+
+        table, th, td {border: 1px solid #0099cc;padding: 15px;text-align: center;color: #003366;}
+
+        th {background: #edf5ff;color: #003366;}
+
+        footer {text-align: center;padding: 20px;background: #0099cc;color: #ffffff;}
+
+        .question {margin-bottom:20px;padding:15px;background:linear-gradient(135deg, #ccffcc, #ccffff);
+                   border-radius:10px;box-shadow: 0 0 10px 5px #0003;}
+
+        .question p {font-size:1.1em;margin-bottom:10px;color:#ff007f;}
+
+        .score {font-size:1.3em;color:#003366;margin-bottom:20px;padding:15px;
+                background:#edf5ff;border-radius:10px;box-shadow: 0 0 10px 5px #0003;text-align:center;}
+
+        #quiz {display: none;margin: 20px;}
+
+        #showTableBtn, 
+        #quizBtn {
+            display: block;
+            margin: 20px auto;
+            background: #ffcc5b;
+            color: #003366;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px -5px #000;
+            transition: all 0.3s ease;
+        }
+
+        #showTableBtn:hover, 
+        #quizBtn:hover {
+            background: #ff9900;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <header id="top">
+        <h2>WebDev Course</h2>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#timetable">Timetable</a></li>
+        </ul>
+    </header>
+
+    <section id="about" class="hero">
+        <h1>About Us</h1>
+        <p>We aim to teach web development from fundamentals to advanced techniques in a simple, hands-on way.</p>
+    </section>
+    
+
+    <section id="courses">
+        <h1>Learn Web Development</h1>
+        <p align="center">Master HTML, CSS, and JavaScript in 45 days</p>
+        <div class="container">
+            <div class="box">
+                <img src="D:/html/htmllogo.jpg" alt="HTML">
+                <br>
+                <a href="https://www.w3schools.com/html/" target="_blank">Learn HTML</a>
+            </div>
+            <div class="box">
+                <img src="D:html/csslogo.jpg" alt="CSS">
+                <br>
+                <a href="https://www.tutorialspoint.com/css/" target="_blank">Learn CSS</a>
+            </div>
+            <div class="box">
+                <img src="D:/html/jslogo.jpg" alt="JavaScript">
+                <br>
+                <a href="https://www.javascripttutorial.net/" target="_blank">Learn JavaScript</a>
+            </div>
+        </div>
+
+        <br>
+        <button id="showTableBtn">View 45-Day Timetable</button>
+        <br>
+        
+        <table id="timetable">
+            <tr>
+                <th>Period</th>
+                <th>Activity</th>
+            </tr>
+            <tr>
+                <td>Day 1-15</td>
+                <td>HTML fundamentals, forms, semantic tags</td>
+            </tr>
+            <tr>
+                <td>Day 16-30</td>
+                <td>CSS, styling, Flexbox, layouts</td>
+            </tr>
+            <tr>
+                <td>Day 31-45</td>
+                <td>JavaScript basics, DOM manipulation, events, final project</td>
+            </tr>
+        </table>
+
+        <button id="quizBtn">Play Quiz</button>
+
+        <div id="quiz">
+            <h1>Web Development Quiz</h1>
+            <form id="quizForm">
+                <div class="question">
+                    <p>1. What does HTML stand for?</p>
+                    <input type="radio" name="q1" value="a"> Hyper Text Makeup Language<br>
+                    <input type="radio" name="q1" value="b"> Hyper Text Markup Language<br>
+                    <input type="radio" name="q1" value="c"> Home Tool Markup Language<br>
+                </div>
+                <div class="question">
+                    <p>2. Which tag is used for styling in HTML?</p>
+                    <input type="radio" name="q2" value="a"> &lt;style&gt;<br>
+                    <input type="radio" name="q2" value="b"> &lt;css&gt;<br>
+                    <input type="radio" name="q2" value="c"> &lt;link&gt;<br>
+                </div>
+                <div class="question">
+                    <p>3. Which is NOT a JavaScript datatype?</p>
+                    <input type="radio" name="q3" value="a"> Number<br>
+                    <input type="radio" name="q3" value="b"> String<br>
+                    <input type="radio" name="q3" value="c"> Character<br>
+                </div>
+                <div class="question">
+                    <p>4. Which method converts a string to an integer in JavaScript?</p>
+                    <input type="radio" name="q4" value="a"> parseInt()<br>
+                    <input type="radio" name="q4" value="b"> Number()<br>
+                    <input type="radio" name="q4" value="c"> toString()<br>
+                </div>
+                <div class="question">
+                    <p>5. What does CSS stand for?</p>
+                    <input type="radio" name="q5" value="a"> Colorful Style Sheets<br>
+                    <input type="radio" name="q5" value="b"> Cascading Style Sheets<br>
+                    <input type="radio" name="q5" value="c"> Computer Style Sheets<br>
+                </div>
+                <div class="question">
+                    <p>6. Which HTML tag is used to create a hyperlink?</p>
+                    <input type="radio" name="q6" value="a"> &lt;link&gt;<br>
+                    <input type="radio" name="q6" value="b"> &lt;a&gt;<br>
+                    <input type="radio" name="q6" value="c"> &lt;url&gt;<br>
+                </div>
+                <div class="question">
+                    <p>7. What is DOM in JavaScript?</p>
+                    <input type="radio" name="q7" value="a"> Digital Object Model<br>
+                    <input type="radio" name="q7" value="b"> Document Object Model<br>
+                    <input type="radio" name="q7" value="c"> Display Object Model<br>
+                </div>
+                <div class="question">
+                    <p>8. Which symbol denotes an ID in CSS?</p>
+                    <input type="radio" name="q8" value="a"> . (dot)<br>
+                    <input type="radio" name="q8" value="b"> # (hash)<br>
+                    <input type="radio" name="q8" value="c"> * (asterisk)<br>
+                </div>
+                <div class="question">
+                    <p>9. Which HTML tag denotes a list item?</p>
+                    <input type="radio" name="q9" value="a"> &lt;ul&gt;<br>
+                    <input type="radio" name="q9" value="b"> &lt;ol&gt;<br>
+                    <input type="radio" name="q9" value="c"> &lt;li&gt;<br>
+                </div>
+                <div class="question">
+                    <p>10. Which JavaScript event occurs when you click a button?</p>
+                    <input type="radio" name="q10" value="a"> onload<br>
+                    <input type="radio" name="q10" value="b"> onsubmit<br>
+                    <input type="radio" name="q10" value="c"> onclick<br>
+                </div>
+
+                <br>
+                <button type="button" id="submitBtn">Submit</button>
+                <button type="reset" id="tryBtn">Try Again</button>
+
+            </form>
+
+            <div class="score" id="score" style="display: none;"></div>
+            <img id="confettiGif" src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif" alt="confetti" style="display: none; margin: 20px auto; width: 200px;" />
+        </div>
+
+    </section>
+    
+
+    <footer>
+        <p>© 2025 WebDev Course. All Rights Reserved.</p>
+        <br>
+        <button id="backToTopBtn">Back to Top</button>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/confetti.browser.min.js"></script>
+
+    <script>
+        document.getElementById('showTableBtn').addEventListener('click', () => {
+            const table = document.getElementById('timetable');
+            table.style.display = table.style.display === 'table' ? 'none' : 'table';
+        });
+
+        document.getElementById('quizBtn').addEventListener('click', () => {
+            document.getElementById('quiz').style.display = 'block';
+            window.scrollTo({top: document.getElementById('quiz').offsetTop, behavior:'smooth'})
+        });
+
+        document.getElementById('backToTopBtn').addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior:'smooth'})
+        });
+
+        document.getElementById('submitBtn').addEventListener('click', () => {
+            const answers = {
+                q1:'b',
+                q2:'a',
+                q3:'c',
+                q4:'a',
+                q5:'b',
+                q6:'b',
+                q7:'b',
+                q8:'b',
+                q9:'c',
+                q10:'c'
+            };
+            let score = 0;
+            for (let q in answers) {
+                const question = document.querySelectorAll(`input[name="${q}"]`);
+                question.forEach(radio => {
+                    if (radio.value === answers[q]) {
+                        radio.parentElement.style.background = "#ccffcc";
+                    } else if (radio.checked && radio.value !== answers[q]) {
+                        radio.parentElement.style.background = "#ffcccc";
+                    }
+                });
+
+                const selected = document.querySelector(`input[name="${q}"]:checked`)?.value;
+                if (selected === answers[q]) score++;
+            }
+            document.getElementById('score').style.display = 'block';
+            document.getElementById('score').innerHTML = `Your Score: ${score}/10`;
+
+            if (score > 7) {
+                document.getElementById('confettiGif').style.display = 'block';
+                confetti({spread: 100, particleCount: 200});
+            } else {
+                document.getElementById('confettiGif').style.display = 'none';
+            }
+        });
+
+        document.getElementById('tryBtn').addEventListener('click', () => {
+            document.getElementById('score').style.display = 'none';
+            document.getElementById('confettiGif').style.display = 'none';
+
+            document.querySelectorAll('.question').forEach(el => {
+                el.style.background = '';
+            });
+        });
+
+    </script>
+
+</body>
+</html>
