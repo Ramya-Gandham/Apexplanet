@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive | Quiz | Joke | Weather | Carousel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background:  linear-gradient(120deg, #f9c5d1, #efaf96);
+      background-size: cover;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .welcome {
+      height: 100vh;
+      background: linear-gradient(to right, #96cbfc, #ff99be);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .welcome h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .welcome p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+
+    .welcome button {
+      background-color: transparent;
+      color: white;
+      padding: 15px 30px;
+      border: 2px solid white;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .welcome button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    header {
+      background: linear-gradient(to right, #e06c71, #f0a39d);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 40px 20px;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.4); /* transparent background */
+      border-left: 8px solid #ff89b3;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      margin: 15px;
+      width: 30%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 0.6s ease both;
+      backdrop-filter: blur(10px); /* glassmorphism effect */
+    }
+
+    .box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .box h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #222;
+      position: relative;
+    }
+
+    .box h2::after {
+      content: "";
+      width: 50px;
+      height: 3px;
+      background-color: #ff89b3;
+      display: block;
+      margin: 10px auto 0;
+      border-radius: 5px;
+    }
+
+    .box button {
+      background: linear-gradient(90deg, #ff89b3, #ffa46e);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-weight: bold;
+      border-radius: 30px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .box button:hover {
+      background: linear-gradient(90deg, #ffa46e, #ff89b3);
+    }
+
+    #quiz-result {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    #weather-result, #joke-text, #final-score {
+      margin-top: 15px;
+      font-size: 16px;
+      color: #444;
+    }
+
+    section.carousel {
+      background-color: white;
+      margin: 30px auto;
+      max-width: 650px;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+
+    .carousel img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      margin-bottom: 15px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 80%;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    h1, h2 {
+      font-size: 32px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 8px;
+      background-color: transparent;
+      color: #0077cc;
+      border: 2px solid #0077cc;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: rgba(0, 119, 204, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .box {
+        width: 45%;
+      }
+      h1 { font-size: 28px; }
+      p, button { font-size: 15px; }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .box {
+        width: 90%;
+      }
+      h1 { font-size: 24px; }
+      p, button, input { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome" id="welcome-screen">
+    <h1>🌟 Welcome to the Interactive Fun Web</h1>
+    <p>Enjoy quizzes, jokes, weather updates and a carousel</p>
+    <button onclick="startApp()">Get Started</button>
+  </div>
+
+  <div id="main-content" style="display:none">
+    <header>
+      <h1>🌐 Responsive Dashboard</h1>
+      <p>HTML | CSS | JS Quiz | Joke | Weather | Carousel</p>
+    </header>
+
+    <div class="container">
+      <div class="box">
+        <h2>🧠 Quiz Time!</h2>
+        <p id="question">Loading question...</p>
+        <div id="options"></div>
+        <p id="quiz-result"></p>
+        <button onclick="nextQuestion()" id="next-btn" style="display:none;">Next</button>
+        <p id="final-score"></p>
+      </div>
+
+      <div class="box">
+        <h2>😂 Joke Generator</h2>
+        <button onclick="showRandomJoke()">Tell me a joke</button>
+        <p id="joke-text"></p>
+      </div>
+
+      <div class="box">
+        <h2>🌦️ Check Weather</h2>
+        <input type="text" id="cityInput" placeholder="Enter city (e.g., Paris)" />
+        <button onclick="getWeather()">Get Weather</button>
+        <p id="weather-result"></p>
+      </div>
+    </div>
+
+    <section class="carousel">
+      <h2>🖼️ Image Carousel</h2>
+      <img id="carousel-img" src="" alt="Image carousel" />
+      <div>
+        <button onclick="prevImage()">⏮️ Previous</button>
+        <button onclick="nextImage()">⏭️ Next</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function startApp() {
+      document.getElementById("welcome-screen").style.display = "none";
+      document.getElementById("main-content").style.display = "block";
+    }
+
+    const quizData = [
+      { question: "What does HTML stand for?", options: { A: "Hyper Text Markup Language", B: "HighText Machine Language", C: "Hyper Tabular Markup Language" }, correct: "A" },
+      { question: "Which tag is used for inserting an image in HTML?", options: { A: "<img>", B: "<image>", C: "<pic>" }, correct: "A" },
+      { question: "Which CSS property controls text size?", options: { A: "font-style", B: "text-size", C: "font-size" }, correct: "C" },
+      { question: "Which of the following is a JavaScript data type?", options: { A: "Number", B: "Float", C: "Character" }, correct: "A" },
+      { question: "How do you write 'Hello' in an alert box in JavaScript?", options: { A: "msg('Hello')", B: "alert('Hello')", C: "prompt('Hello')" }, correct: "B" }
+    ];
+
+    let current = 0;
+    let score = 0;
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const resultEl = document.getElementById("quiz-result");
+    const nextBtn = document.getElementById("next-btn");
+    const finalScore = document.getElementById("final-score");
+
+    function loadQuestion() {
+      const q = quizData[current];
+      questionEl.textContent = q.question;
+      optionsEl.innerHTML = "";
+      resultEl.textContent = "";
+      nextBtn.style.display = "none";
+
+      for (let key in q.options) {
+        const btn = document.createElement("button");
+        btn.textContent = `${key}. ${q.options[key]}`;
+        btn.onclick = () => checkAnswer(key);
+        optionsEl.appendChild(btn);
+      }
+    }
+
+    function checkAnswer(selected) {
+      const q = quizData[current];
+      if (selected === q.correct) {
+        resultEl.textContent = "✅ Correct!";
+        resultEl.style.color = "green";
+        score++;
+      } else {
+        resultEl.textContent = "❌ Wrong answer.";
+        resultEl.style.color = "red";
+      }
+      Array.from(optionsEl.children).forEach(btn => btn.disabled = true);
+      nextBtn.style.display = "inline-block";
+    }
+
+    function nextQuestion() {
+      current++;
+      if (current < quizData.length) {
+        loadQuestion();
+      } else {
+        questionEl.style.display = "none";
+        optionsEl.style.display = "none";
+        resultEl.style.display = "none";
+        nextBtn.style.display = "none";
+        finalScore.textContent = `🎉 You scored ${score} out of ${quizData.length}!`;
+      }
+    }
+
+    loadQuestion();
+
+    const offlineJokes = [
+      "Why are snails slow? Because they're carrying a house on their back!",
+      "What's the smartest insect? A spelling bee!"
+    ];
+
+    function showRandomJoke() {
+      const jokeText = document.getElementById("joke-text");
+      const randomIndex = Math.floor(Math.random() * offlineJokes.length);
+      jokeText.textContent = "😂 " + offlineJokes[randomIndex];
+    }
+
+    function getWeather() {
+      const city = document.getElementById("cityInput").value.trim().toLowerCase();
+      const weatherResult = document.getElementById("weather-result");
+      const mockWeatherData = {
+        tadepalligudem: { temp: 31, condition: "Partly Cloudy ⛅" },
+        punjab: { temp: 35, condition: "Dry and Warm 🌞" },
+        london: { temp: 22, condition: "Cool and Breezy 🌬️" }
+      };
+
+      if (!city) {
+        weatherResult.textContent = "❗ Please enter a city name.";
+        return;
+      }
+      if (mockWeatherData[city]) {
+        const data = mockWeatherData[city];
+        weatherResult.textContent = `🌡️ ${city.charAt(0).toUpperCase() + city.slice(1)}: ${data.temp}°C, ${data.condition}`;
+      } else {
+        weatherResult.textContent = "⚠️ Weather data not available.";
+      }
+    }
+
+    const images = ["araku.jpg", "betdwaraka.jpg", "dallake.jpg", "VarkalaCliffBeach.jpg"];
+    let currentImage = 0;
+    const carouselImg = document.getElementById("carousel-img");
+
+    function showImage() {
+      carouselImg.src = images[currentImage];
+    }
+
+    function nextImage() {
+      currentImage = (currentImage + 1) % images.length;
+      showImage();
+    }
+
+    function prevImage() {
+      currentImage = (currentImage - 1 + images.length) % images.length;
+      showImage();
+    }
+
+    showImage();
+  </script>
+</body>
+</html>
