@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fefefe;
+      color: #333;
+    }
+
+    .welcome-page {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to right, #d9e1e6, #3198e7);
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+    .welcome-page h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    .welcome-page p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .welcome-page button {
+      padding: 10px 20px;
+      background-color: #ffffff;
+      border: none;
+      color: #333;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .welcome-page button:hover {
+      background-color: #3198e7;
+    }
+
+    .hidden { display: none; }
+
+    .hero-2 {
+      background: linear-gradient(135deg, #675dfe, #8b7dfb);
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+    }
+    .highlight { color: #ffda6a; }
+    .subline { font-size: 1.2rem; margin: 10px 0; opacity: 0.9; }
+
+    .services {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 40px 20px;
+      flex-wrap: wrap;
+    }
+    .service-card {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      flex: 1 1 200px;
+    }
+    .service-card h3 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      color: #675dfe;
+    }
+    .service-card p { color: #555; }
+    .service-card button {
+      margin-top: 10px;
+      padding: 8px 14px;
+      background-color: #675dfe;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .todo-section, .product-section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      display: none;
+    }
+    .todo-section.active, .product-section.active {
+      display: block;
+    }
+    .todo-section h2, .product-section h2 {
+      text-align: center;
+      color: #675dfe;
+      margin-bottom: 20px;
+    }
+
+    .todo-input {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .todo-input input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .todo-input button {
+      padding: 10px 16px;
+      background: #675dfe;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .todo-actions {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .todo-actions button {
+      padding: 6px 12px;
+      border: none;
+      background: #ddd;
+      color: #333;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    ul.todo-list {
+      list-style: none;
+      padding: 0;
+    }
+    ul.todo-list li {
+      background: #f0f0f0;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    ul.todo-list li.done span {
+      text-decoration: line-through;
+      color: gray;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .filters select {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .product-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .product-item {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      background: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Welcome Page -->
+  <section class="welcome-page" id="welcome">
+    <h1>Welcome to My Portfolio</h1>
+    <button onclick="startPortfolio()">Enter Portfolio</button>
+  </section>
+
+  <div id="mainContent" class="hidden">
+    <!-- Rest of the portfolio HTML content goes here (already present) -->
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-2">
+    <div class="hero-content">
+      <h1>Hi, I'm <span class="highlight">Greeshmitha Ramya</span></h1>
+      <p class="subline">A passionate student & aspiring developer</p>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="services">
+    <div class="service-card">
+      <h3>💡</h3>
+      <p>Actively learning web development</p>
+    </div>
+    <div class="service-card">
+      <h3>📚</h3>
+      <p>Completed academic projects</p>
+    </div>
+    <div class="service-card">
+      <h3>⚙️</h3>
+      <p>Hands-on with HTML, CSS, JS, Git</p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="services">
+    <div class="service-card">
+      <h3>📝 To-Do App</h3>
+      <p>A responsive to-do list app with persistent storage using localStorage and task filters.</p>
+      <button onclick="showSection('todoApp')">Open</button>
+    </div>
+    <div class="service-card">
+      <h3>🛍️ Product Listing</h3>
+      <p>An interactive product page with category filtering and sorting by price or rating.</p>
+      <button onclick="showSection('productApp')">Open</button>
+    </div>
+  </section>
+
+  <!-- TO-DO APP -->
+  <section id="todoApp" class="todo-section">
+    <h2>📝 To-Do List</h2>
+    <div class="todo-input">
+      <input type="text" id="todoInput" placeholder="Enter a new task">
+      <button onclick="addTask()">Add</button>
+    </div>
+    <div class="todo-actions">
+      <button onclick="clearAllTasks()">Clear All</button>
+      <button onclick="filterTasks('active')">Remaining</button>
+    </div>
+    <ul class="todo-list" id="todoList"></ul>
+  </section>
+
+  <!-- PRODUCT LISTING -->
+  <section id="productApp" class="product-section">
+    <h2>🛍️ Product Listing</h2>
+    <div class="filters">
+      <select onchange="filterCategory(this.value)">
+        <option value="all">All Categories</option>
+        <option value="tech">Tech</option>
+        <option value="clothing">Clothing</option>
+      </select>
+      <select onchange="sortProducts(this.value)">
+        <option value="default">Sort by</option>
+        <option value="price">Price: Low to High</option>
+        <option value="rating">Rating: High to Low</option>
+      </select>
+    </div>
+    <div class="product-list" id="productList"></div>
+  </section>
+
+  <script>
+    function startPortfolio() {
+      document.getElementById('welcome').style.display = 'none';
+      document.getElementById('mainContent').classList.remove('hidden');
+    }
+
+    function showSection(id) {
+      document.getElementById('todoApp').classList.remove('active');
+      document.getElementById('productApp').classList.remove('active');
+      document.getElementById(id).classList.add('active');
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    let currentFilter = 'all';
+
+    function renderTasks() {
+      const list = document.getElementById('todoList');
+      list.innerHTML = '';
+      tasks.forEach((task, index) => {
+        if (currentFilter === 'all' || (currentFilter === 'active' && !task.done)) {
+          const li = document.createElement('li');
+          li.className = task.done ? 'done' : '';
+          li.innerHTML = `
+            <div>
+              <input type="checkbox" ${task.done ? 'checked' : ''} onchange="toggleDone(${index})">
+              <span>${task.text}</span>
+            </div>
+          `;
+          list.appendChild(li);
+        }
+      });
+    }
+
+    function addTask() {
+      const input = document.getElementById('todoInput');
+      if (input.value.trim() !== '') {
+        tasks.push({ text: input.value, done: false });
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        input.value = '';
+        renderTasks();
+      }
+    }
+
+    function toggleDone(index) {
+      tasks[index].done = !tasks[index].done;
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      renderTasks();
+    }
+
+    function clearAllTasks() {
+      if (confirm("Are you sure you want to clear all tasks?")) {
+        tasks = [];
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        renderTasks();
+      }
+    }
+
+    function filterTasks(type) {
+      currentFilter = type;
+      renderTasks();
+    }
+
+    renderTasks();
+
+    const products = [
+      { name: 'Smartphone', category: 'tech', price: 29999, rating: 4.5 },
+      { name: 'Laptop', category: 'tech', price: 59999, rating: 4.8 },
+      { name: 'Headphones', category: 'tech', price: 1999, rating: 4.6 },
+      { name: 'Smartwatch', category: 'tech', price: 3499, rating: 4.4 },
+      { name: 'Bluetooth Speaker', category: 'tech', price: 2799, rating: 4.3 },
+      { name: 'Tablet', category: 'tech', price: 17999, rating: 4.5 },
+      { name: 'Night Dress', category: 'clothing', price: 499, rating: 4.2 },
+      { name: 'Tops', category: 'clothing', price: 999, rating: 4.3 },
+      { name: 'Leggins', category: 'clothing', price: 1299, rating: 4.5 },
+      { name: 'Saree', category: 'clothing', price: 2499, rating: 4.7 },
+      { name: 'Dress Material', category: 'clothing', price: 999, rating: 4.1 },
+      { name: 'Kurthi', category: 'clothing', price: 2199, rating: 4.6 }
+    ];
+
+    let filteredProducts = [...products];
+    let currentSort = 'default';
+
+    function renderProducts() {
+      const list = document.getElementById('productList');
+      list.innerHTML = '';
+      filteredProducts.forEach(p => {
+        const item = document.createElement('div');
+        item.className = 'product-item';
+        item.innerHTML = `
+          <strong>${p.name}</strong>
+          <span>₹${p.price} | ⭐ ${p.rating}</span>
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    function filterCategory(category) {
+      filteredProducts = category === 'all' ? [...products] : products.filter(p => p.category === category);
+      sortProducts(currentSort);
+    }
+
+    function sortProducts(type) {
+      currentSort = type;
+      if (type === 'price') {
+        filteredProducts.sort((a, b) => a.price - b.price);
+      } else if (type === 'rating') {
+        filteredProducts.sort((a, b) => b.rating - a.rating);
+      }
+      renderProducts();
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>
